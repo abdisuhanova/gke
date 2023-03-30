@@ -14,14 +14,7 @@ pipeline{
     }
     stage('terraform apply') {
     steps {
-        input {
-            message 'Are you sure to destroy all app'
-            id 'envId'
-            ok 'Submit'
-            parameters {
-                choice choices: ['no', 'yes', 'minnn', 'destroy'], name: 'proceed'
-                }
-            }
+        sh 'terraform apply'
         }
     }
   
