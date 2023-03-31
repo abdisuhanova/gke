@@ -4,13 +4,18 @@
 variable "project_id" {
   description = "project id"
 }
+variable "cred" {
+  type = "string"
+  default = "file"
+}
 
 variable "region" {
   description = "region"
 }
 
 provider "google" {
-  credentials = file(${MY_FILE})
+  credentials = file(var.cred)
+}
 
 # Subnet
 resource "google_compute_subnetwork" "subnet" {
