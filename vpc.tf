@@ -9,6 +9,9 @@ variable "region" {
   description = "region"
 }
 
+variable "cred" {
+  type = "string"
+}
 provider "google" {
   credentials = file(var.cred)
 }
