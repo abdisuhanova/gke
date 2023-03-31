@@ -5,7 +5,7 @@ variable "project_id" {
   description = "project id"
 }
 variable "cred" {
-  type = "string"
+  type = string
   default = "file"
 }
 
