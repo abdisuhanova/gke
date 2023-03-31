@@ -35,7 +35,7 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
   }
 }
 provider "google" {
-  project = "playground-s-11-e0cdb590"
+  project = "playground-s-11-49fb42ee"
   region  = "us-central1"
 }
 
