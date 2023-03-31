@@ -16,10 +16,6 @@ variable "region" {
 provider "google" {
   credentials = file(var.cred)
 }
-resource "google_compute_network" "vpc" {
-  name = "vpc-network"
-}
-
 # Subnet
 resource "google_compute_subnetwork" "subnet" {
   name          = "${var.project_id}-subnet"
