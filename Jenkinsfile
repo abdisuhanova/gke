@@ -9,6 +9,7 @@ pipeline{
     }
     stage('plan') {
     steps {
+     withCredentials([file(credentialsId: 'cred', variable: 'MY_FILE')]){
         sh 'terraform plan '
         }
     }
