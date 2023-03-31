@@ -4,13 +4,15 @@ pipeline{
  stages {
     stage('init') {
     steps {
-        sh 'terraform init'
+     withCredentials([file(credentialsId: 'cred', variable: 'MY_FILE')]){
+        sh 'TF_VAR_cred=$MY_FILE terraform init'
+    }
     }
     }
     stage('plan') {
     steps {
      withCredentials([file(credentialsId: 'cred', variable: 'MY_FILE')]){
-        sh 'terraform plan '
+        sh 'TF_VAR_cred=$MY_FILE terraform plan '
         }
     }
     }
