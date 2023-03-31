@@ -16,7 +16,10 @@ provider "google" {
   credentials = file(var.cred)
 }
 resource "google_compute_network" "vpc" {
-  name = "vpc-network"
+  project                 = "playground-s-11-e0cdb590"
+  name                    = "vpc-network"
+  auto_create_subnetworks = true
+  mtu                     = 1460
 }
 # Subnet
 resource "google_compute_subnetwork" "subnet" {
