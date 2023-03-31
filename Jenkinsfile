@@ -5,21 +5,21 @@ pipeline{
     stage('init') {
     steps {
      withCredentials([file(credentialsId: 'cred', variable: 'MY_FILE')]){
-        sh 'TF_VAR_cred=$MY_FILE terraform init'
+        sh 'export GOOGLE_APPLICATION_CREDENTIALS=$MY_FILE && terraform init'
     }
     }
     }
     stage('plan') {
     steps {
      withCredentials([file(credentialsId: 'cred', variable: 'MY_FILE')]){
-        sh 'TF_VAR_cred=$MY_FILE terraform plan '
+        sh 'export GOOGLE_APPLICATION_CREDENTIALS=$MY_FILE && terraform plan '
         }
     }
     }
     stage('terraform apply') {
     steps {
      withCredentials([file(credentialsId: 'cred', variable: 'MY_FILE')]){
-        sh 'TF_VAR_cred=$MY_FILE terraform apply --auto-approve'
+        sh 'export GOOGLE_APPLICATION_CREDENTIALS=$MY_FILE && terraform apply --auto-approve'
         }
     }
     }
@@ -27,7 +27,7 @@ pipeline{
     stage('terraform destroy') {
     steps {
         withCredentials([file(credentialsId: 'cred', variable: 'MY_FILE')]){
-        sh 'TF_VAR_cred=$MY_FILE terraform destroy --auto-approve'
+        sh 'export GOOGLE_APPLICATION_CREDENTIALS=$MY_FILE && terraform destroy --auto-approve'
         }
     }
     }
