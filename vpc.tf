@@ -1,8 +1,6 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
-variable "cred" {
-type = string
-}
+
 resource "google_service_account" "default" {
   account_id   = "service-account-id"
   display_name = "Service Account"
@@ -39,6 +37,5 @@ resource "google_container_node_pool" "primary_preemptible_nodes" {
 provider "google" {
   project = "playground-s-11-e0cdb590"
   region  = "us-central1"
-  credentials = file(var.cred)
 }
 
