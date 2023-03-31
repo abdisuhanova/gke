@@ -4,10 +4,6 @@
 variable "project_id" {
   description = "project id"
 }
-variable "cred" {
-  type = string
-  default = "file"
-}
 
 variable "region" {
   description = "region"
