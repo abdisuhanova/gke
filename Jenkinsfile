@@ -28,17 +28,19 @@ pipeline{
         }
     }
     }
-  
-    stage('terraform destroy') {
-    steps {
-        withCredentials([file(credentialsId: 'cred', variable: 'MY_FILE')]){
-        sh 'export GOOGLE_APPLICATION_CREDENTIALS=$MY_FILE && terraform destroy --auto-approve'
-        }
-    }
-    }
     stage('deploy') {
-    step([$class: 'KubernetesEngineBuilder', projectId: env.PROJECT_ID, clusterName: env.CLUSTER_NAME, location: env.LOCATION, manifestPattern: 'main.yaml', credentialsId: env.CREDENTIALS_ID, verifyDeployments: true])
+    steps {
+    withCredentials([file(credentialsId: 'cred', variable: 'MY_FILE')]){
+      sh 'export GOOGLE_APPLICATION_CREDENTIALS=$MY_FILE && gcloud container clusters get-credentials cluster --region us-central1 --project playground-s-11-e0cdb590'
     }
+    }
+ /   stage('terraform destroy') {
+  /  steps {
+   /     withCredentials([file(credentialsId: 'cred', variable: 'MY_FILE')]){
+    /    sh 'export GOOGLE_APPLICATION_CREDENTIALS=$MY_FILE && terraform destroy --auto-approve'
+     /   }
+   / }
+   / }
  }
 }
 
