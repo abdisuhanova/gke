@@ -1,6 +1,6 @@
 pipeline{
     environment {
-        PROJECT_ID = 'playground-s-11-e0cdb590'
+        PROJECT_ID = 'pplayground-s-11-49fb42ee'
         CLUSTER_NAME = 'my-gke-cluster'
         LOCATION = 'us-central1'
         CREDENTIALS_ID = 'cred'
