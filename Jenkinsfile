@@ -18,14 +18,17 @@ pipeline{
     }
     stage('terraform apply') {
     steps {
-        sh 'terraform apply'
+     withCredentials([file(credentialsId: 'cred', variable: 'MY_FILE')]){
+        sh 'TF_VAR_cred=$MY_FILE terraform apply --auto-approve'
         }
+    }
     }
   
     stage('terraform destroy') {
     steps {
-        sh 'terraform destroy -auto-approve '
-    
+        withCredentials([file(credentialsId: 'cred', variable: 'MY_FILE')]){
+        sh 'TF_VAR_cred=$MY_FILE terraform destroy --auto-approve'
+        }
     }
     }
  }
