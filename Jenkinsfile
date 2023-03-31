@@ -34,6 +34,7 @@ pipeline{
       sh 'export GOOGLE_APPLICATION_CREDENTIALS=$MY_FILE && gcloud container clusters get-credentials $CLUSTER_NAME --region $LOCATION --project $PROJECT_ID'
     }
     }
+    }
  //   stage('terraform destroy') {
   //  steps {
    //     withCredentials([file(credentialsId: 'cred', variable: 'MY_FILE')]){
