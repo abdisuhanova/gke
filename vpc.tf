@@ -8,13 +8,6 @@ variable "project_id" {
 variable "region" {
   description = "region"
 }
-
-variable "cred" {
-  type = string
-}
-provider "google" {
-  credentials = file(var.cred)
-}
 resource "google_compute_network" "vpc" {
   project                 = "playground-s-11-e0cdb590"
   name                    = "vpc-network"
