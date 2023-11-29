@@ -2,7 +2,8 @@ trigger:
  tags:
    include:
      - perf-test*
-
+variables:
+  ENVIRONMENT: dev
 pool: cholpona
 
 steps:
