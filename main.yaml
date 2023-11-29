@@ -1,10 +1,12 @@
 trigger:
  tags:
    include:
-   - perf-test*
+     - last-one*
 
 pool: cholpona
+
 steps:
 - script: |
     # Accessing predefined variables
-    echo "Current branch: $(Build.SourceBranch)"
+    echo "$(Build.SourceBranch)"
+
