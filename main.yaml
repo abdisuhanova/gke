@@ -5,14 +5,15 @@ trigger:
 
 pool:
   name: cholpona
-
+variables:
+  ENVIRONMENT: dev
 steps:
 - script: |
-    if [[ "$Build.SourceBranch" == refs/tags/perf-test* && "$ENVIRONMENT" == "dev" ]]; then
+    if [[ "$BUILD_SOURCEBRANCH" == refs/tags/perf-test* && "$ENVIRONMENT" == "dev" ]]; then
       NAMESPACE="perf-test"
       echo "Namespace set to perf-test"
     else
-      echo "Condition not met"
-      exit 1
+      echo "Condition not met: BUILD_SOURCEBRANCH=$BUILD_SOURCEBRANCH, ENVIRONMENT=$ENVIRONMENT"
     fi
   displayName: 'Set Namespace for Perf Test'
+
