@@ -8,5 +8,5 @@ pool: cholpona
 
 steps:
 - script: |
-    [[ "$BUILD_SOURCEBRANCH" == refs/tags/perf-test* && "$ENVIRONMENT" == "dev" ]] && NAMESPACE="perf-test" || echo "1"
+    [[ "$BUILD_SOURCEBRANCH" == refs/tags/perf-test* && "$ENVIRONMENT" == "dev" ]] && NAMESPACE="perf-test" && echo "$NAMESPACE" || echo "1"
 
