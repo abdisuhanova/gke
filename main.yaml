@@ -1,4 +1,7 @@
-trigger: '*'
+trigger: 
+  branches:
+    include:
+    - '*'
 variables:
   ENVIRONMENT: dev
 pool: cholpona
