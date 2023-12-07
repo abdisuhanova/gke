@@ -10,7 +10,7 @@ resources:
     type: git 
     name: ag-fraud-advisor/ag-fraud-advisor
     ref: refs/heads/Test
-extend: 
+extends: 
 - template: templ.yaml@ag-fraud-advisor
 
 jobs:
