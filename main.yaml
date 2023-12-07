@@ -12,7 +12,7 @@ resources:
     ref: refs/heads/Test
     
 extends: 
-  - template: templ.yaml@ag-fraud-advisor
+  template: templ.yaml@ag-fraud-advisor
   - stage: sw
     jobs:
     - job: sw
