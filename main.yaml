@@ -13,7 +13,7 @@ resources:
     
 extends: 
   template: templ.yaml@ag-fraud-advisor
-  - stage: sw
+  stage: sw
     jobs:
     - job: sw
       steps:
