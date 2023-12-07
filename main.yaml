@@ -2,8 +2,6 @@ trigger:
   branches:
     include:
     - '*'
-variables:
-  ENVIRONMENT: dev
 pool: cholpona
 
 resources:
@@ -11,18 +9,8 @@ resources:
   - repository: ag-fraud-advisor
     type: git 
     name: ag-fraud-advisor/ag-fraud-advisor
-    ref: refs/heads/master
+    ref: refs/heads/Test
     
-steps:
-- script: |
-    echo $(Build.Repository.Name)
-    echo $(Build.RequestedFor)
-    echo $(Build.RequestedForEmail)
-    echo $(Build.SourceBranchName)
-    echo $(Build.RequestedForId)
-    echo $(Build.SourceVersionMessage)
-    echo $(Build.SourceVersion)
-    echo $(Build.TriggeredBy.BuildNumber)
-    echo $(Build.TriggeredBy.DefinitionName)
-    echo $(Build.TriggeredBy.DefinitionId)
-    echo $(Build.TriggeredBy.BuildId)
+extends: 
+  template: templ.yaml@ag-fraud-advisor
+
