@@ -14,11 +14,11 @@ resources:
 stages: 
   - template: templ.yaml@ag-fraud-advisor
     - stage: sw
-       jobs:
-       - job: sw
-         steps:
-         - script: |
-             echo 'stage is working'
+      jobs:
+      - job: sw
+        steps:
+        - script: |
+            echo 'stage is working'
      
     
 
