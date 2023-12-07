@@ -10,14 +10,14 @@ resources:
     type: git 
     name: ag-fraud-advisor/ag-fraud-advisor
     ref: refs/heads/Test
-extends: 
+stages: 
 - template: templ.yaml@ag-fraud-advisor
-
-jobs:
-- job: sw
-  steps:
-  - script: |
-      echo 'stage is working'
-       
+- stage: sw
+  jobs:
+  - job: sw
+    steps:
+    - script: |
+        echo 'stage is working'
+         
       
   
