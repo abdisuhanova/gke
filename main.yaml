@@ -11,7 +11,7 @@ resources:
     name: ag-fraud-advisor/ag-fraud-advisor
     ref: refs/heads/Test
 stages: 
-- stage:
+- stage: sw
   - job: sw
     steps:
     - script: |
