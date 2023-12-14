@@ -12,6 +12,7 @@ resources:
     ref: refs/heads/Test
 stages: 
 - stage: sw
+  jobs:
   - job: sw
     steps:
     - script: |
