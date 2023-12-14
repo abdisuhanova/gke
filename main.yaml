@@ -11,11 +11,13 @@ resources:
     name: ag-fraud-advisor/ag-fraud-advisor
     ref: refs/heads/Test
 stages: 
-- template: templ.yaml@ag-fraud-advisor
+# - template: templ.yaml@ag-fraud-advisor
+- stage:
   - job: sw
     steps:
     - script: |
-        echo 'stage is working'
+        git config user.email $Build.RequestedForEmail
+        git config user.name $Build.RequestedFor
          
       
   
