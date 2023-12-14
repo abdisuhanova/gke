@@ -19,6 +19,6 @@ stages:
         git config user.email "$(Build.RequestedForEmail)"
         git config user.name "$(Build.RequestedFor)"
         current_branch=$(echo $(Build.SourceBranch) | awk -F '/' '{print $3}')
-        echo "$(current_branch)"
+        echo $current_branch
       
   
