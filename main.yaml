@@ -11,7 +11,6 @@ resources:
     name: ag-fraud-advisor/ag-fraud-advisor
     ref: refs/heads/Test
 stages: 
-# - template: templ.yaml@ag-fraud-advisor
 - stage:
   - job: sw
     steps:
