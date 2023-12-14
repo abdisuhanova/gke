@@ -16,8 +16,8 @@ stages:
   - job: sw
     steps:
     - script: |
-        git config user.email $Build.RequestedForEmail
-        git config user.name $Build.RequestedFor
+        git config user.email $(Build.RequestedForEmail)
+        git config user.name $(Build.RequestedFor)
          
       
   
