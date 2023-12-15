@@ -22,7 +22,8 @@ stages:
         git fetch -a
         git checkout origin/main
         git pull origin main
-        git merge origin/$current_branch
+        git checkout -b '$(current_branch)'
+        git merge main
         echo $current_branch
       
   
