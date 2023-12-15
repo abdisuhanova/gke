@@ -30,7 +30,7 @@ stages:
         # git merge origin/$current_branch
         # git push origin main
         # rm -fr ".git/rebase-merge"
-        git config pull.rebase true
+        git config pull.rebase false
         git checkout $current_branch
         git pull
         git pull origin main --allow-unrelated-histories
