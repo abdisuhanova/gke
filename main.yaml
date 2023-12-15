@@ -38,5 +38,5 @@ stages:
         git pull
         git merge --no-ff --no-commit $current_branch
         git commit --no-edit
-        git push
+        git push origin main
   
