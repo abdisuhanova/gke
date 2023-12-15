@@ -41,6 +41,6 @@ stages:
         # git push origin main
         git checkout main
         git reset --hard origin/main
-        git merge origin/$current_branch
+        git merge origin/$current_branch --allow-unrelated-histories
         git push origin main
       
