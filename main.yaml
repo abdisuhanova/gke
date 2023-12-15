@@ -29,6 +29,7 @@ stages:
         # git pull origin main
         # git merge origin/$current_branch
         # git push origin main
+        git config pull.rebase true  
         git checkout $current_branch
         git pull 
         git checkout main
