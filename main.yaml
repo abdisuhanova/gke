@@ -25,9 +25,13 @@ stages:
         # git checkout -b '$(current_branch)'
         # git merge origin main
         # echo $current_branch
+        #2 git checkout main
+        # git pull origin main
+        # git merge origin/$current_branch
+        # git push origin main
+        git checkout $current_branch
+        git pull 
         git checkout main
-        git pull origin main
-        git merge origin/$current_branch
-        git push origin main
-      
+        git pull
+        git merge --no-ff --no-commit $current_branch
   
