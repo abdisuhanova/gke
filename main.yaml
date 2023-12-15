@@ -29,7 +29,7 @@ stages:
         # git pull origin main
         # git merge origin/$current_branch
         # git push origin main
-        rm -fr ".git/rebase-merge"
+        # rm -fr ".git/rebase-merge"
         git config pull.rebase true
         git checkout $current_branch
         git pull
