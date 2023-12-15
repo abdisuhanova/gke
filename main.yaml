@@ -30,13 +30,17 @@ stages:
         # git merge origin/$current_branch
         # git push origin main
         rm -fr ".git/rebase-merge"
-        git config pull.rebase false
-        git checkout $current_branch
-        git pull
-        git pull origin main --allow-unrelated-histories
-        git checkout main 
-        git pull
-        git merge --no-ff --no-commit $current_branch
-        git commit --no-edit
-        git push origin main
-  
+        # git config pull.rebase false
+        # git checkout $current_branch
+        # git pull
+        # git pull origin main --allow-unrelated-histories
+        # git checkout main 
+        # git pull
+        # git merge --no-ff --no-commit $current_branch
+        # git commit --no-edit
+        # git push origin main
+        git checkout master
+        git reset --hard origin/master
+        git merge $CI_BUILD_REF
+        git push origin master
+      
