@@ -39,8 +39,8 @@ stages:
         # git merge --no-ff --no-commit $current_branch
         # git commit --no-edit
         # git push origin main
-        git checkout master
-        git reset --hard origin/master
-        git merge $CI_BUILD_REF
-        git push origin master
+        git checkout main
+        git reset --hard origin/main
+        git merge origin/$current_branch
+        git push origin main
       
