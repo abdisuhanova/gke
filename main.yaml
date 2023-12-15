@@ -38,9 +38,8 @@ stages:
         git add .
         echo "GIT ADD"
         git commit -m 'merged with $(Build.SourceBranch)'
-        # echo "GIT SET"
-        # git remote set-url origin "https://$PAT@github.com/abdisuhanova/$(Build.Repository.Name)"
         echo "GIT COMMIT"
+        git config credential.helper '!echo "username=abdisuhanova\npassword=$PAT"'
         git push origin main:"$PAT"
         echo "GIT STATUS"
         git status
