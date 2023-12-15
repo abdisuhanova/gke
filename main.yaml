@@ -23,7 +23,8 @@ stages:
             echo "Building main branch so no merge is needed."
             exit
         fi
-        
+        echo "$(Build.Repository.Name)"
+        echo "$(Build.RequestedFor)"
         sourceBranch="origin/${BUILD_SOURCEBRANCH/refs\/heads\//}"
         echo "GIT CHECKOUT MAIN"
         git checkout main
