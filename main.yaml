@@ -16,6 +16,7 @@ stages:
   - job: sw
     steps:
     - script: |
+        PAT='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'
         git config user.email "$(Build.RequestedForEmail)"
         git config user.name "$(Build.RequestedFor)"
         echo "SOURCE BRANCH IS $BUILD_SOURCEBRANCH"
@@ -38,8 +39,10 @@ stages:
         git add .
         echo "GIT ADD"
         git commit -m 'merged with $(Build.SourceBranch)'
+        echo "GIT SET"
+        git remote set-url origin "https://$PAT@github.com/abdisuhanova/$(Build.Repository.Name)"
         echo "GIT COMMIT"
-        git push origin
+        git push origin 
         echo "GIT STATUS"
         git status
 
