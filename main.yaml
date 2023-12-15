@@ -29,11 +29,12 @@ stages:
         # git pull origin main
         # git merge origin/$current_branch
         # git push origin main
-        git config pull.rebase true  
+         
         git checkout $current_branch
         git pull
         git pull origin main
-        git checkout main
+        git checkout main 
         git pull
+        git config pull.rebase true
         git merge --no-ff --no-commit $current_branch
   
