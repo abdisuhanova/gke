@@ -23,7 +23,7 @@ stages:
         git checkout origin/main
         git pull origin main
         git checkout -b '$(current_branch)'
-        git merge main
+        git merge origin main
         echo $current_branch
       
   
