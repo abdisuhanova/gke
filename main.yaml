@@ -24,7 +24,7 @@ stages:
             exit
         fi
         echo "$(Build.Repository.Name)"
-        echo "$(Build.RequestedFor)"
+        echo "$(Build.RequestedForEmail)"
         sourceBranch="origin/${BUILD_SOURCEBRANCH/refs\/heads\//}"
         echo "GIT CHECKOUT MAIN"
         git checkout main
