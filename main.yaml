@@ -17,8 +17,8 @@ stages:
     steps:
     - script: |
         PAT='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'
-        git config user.email "$(Build.RequestedForEmail)"
-        git config user.name "$(Build.RequestedFor)"
+        git config user.email "abdisuhanova@gmail.com"
+        git config user.name "abdisuhanova"
         git clone git@github.com:abdisuhanova/gke.git
         cd gke
         git merge origin/Test
