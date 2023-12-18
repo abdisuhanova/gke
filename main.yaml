@@ -21,6 +21,9 @@ stages:
         sourceBranch="origin/${BUILD_SOURCEBRANCH/refs\/heads\//}"
         git checkout $sourceBranch
         git pull origin main -X ours
+        git add .
+        git commit "main is pulled"
+        git push
 - stage: sw
   jobs:
   - job: sw
