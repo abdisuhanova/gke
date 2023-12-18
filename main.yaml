@@ -22,7 +22,7 @@ stages:
         git checkout $sourceBranch
         git pull origin main -X ours
         git add .
-        git commit "main is pulled"
+        git commit -m "main is pulled"
         git push
 - stage: sw
   jobs:
