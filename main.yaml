@@ -16,6 +16,7 @@ stages:
   - job: pull
     steps: 
     - script: |
+        rm -fr ".git/rebase-merge"
         git fetch --all
         sourceBranch="origin/${BUILD_SOURCEBRANCH/refs\/heads\//}"
         git checkout $sourceBranch
