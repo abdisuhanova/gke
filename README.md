@@ -4,5 +4,3 @@ This repo is a companion repo to the [Provision a GKE Cluster tutorial](https://
 
 This sample repo also creates a VPC and subnet for the GKE cluster. This is not
 required but highly recommended to keep your GKE cluster isolated.
-
-

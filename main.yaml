@@ -15,26 +15,62 @@ stages:
   jobs:
   - job: sw
     steps:
+    - checkout: self
+      persistCredentials: true
     - script: |
+        # PAT="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"
         git config user.email "$(Build.RequestedForEmail)"
         git config user.name "$(Build.RequestedFor)"
-        current_branch=$(echo $(Build.SourceBranch) | awk -F '/' '{print $3}')
-        git fetch -a
-        # git checkout origin/main
-        # git pull origin main
-        # git checkout -b '$(current_branch)'
-        # git merge origin main
-        # echo $current_branch
-        #2 git checkout main
-        # git pull origin main
-        # git merge origin/$current_branch
+        echo "SOURCE BRANCH IS $BUILD_SOURCEBRANCH"
+        if [ "$BUILD_SOURCEBRANCH" == "refs/heads/main" ]; then
+            echo "Building main branch so no merge is needed."
+            exit
+        fi
+        git fetch origin
+        sourceBranch="origin/${BUILD_SOURCEBRANCH/refs\/heads\//}"
+        echo "GIT CHECKOUT MAIN"
+        git checkout main
+        echo "GIT STATUS"
+        git status
+        echo "GIT MERGE"
+        git merge "$sourceBranch" -m "Merge to main" -X theirs --allow-unrelated-histories
+        echo "GIT STATUS"
+        git status
+        echo "GIT PUSH"
+        git add .
+        echo "GIT ADD"
+        git commit -m 'merged with $(Build.SourceBranch)'
+        echo "GIT COMMIT"
+        # git push https://$(System.AccessToken)@
+        # B64_PAT=$(printf ":$(System.AccessToken)" | base64)
+        # git -c http.extraHeader="Authorization: Basic ${B64_PAT}" push origin main
+        git push origin main
+        echo "GIT STATUS"
+        git status
+
+        # current_branch=$(echo $(Build.SourceBranch) | awk -F '/' '{print $3}')
+        # git fetch -a
+        # # git checkout origin/main
+        # # git pull origin main
+        # # git checkout -b '$(current_branch)'
+        # # git merge origin main
+        # # echo $current_branch
+        # #2 git checkout main
+        # # git pull origin main
+        # # git merge origin/$current_branch
+        # # git push origin main
+        # rm -fr ".git/rebase-merge"
+        # # git config pull.rebase false
+        # # git checkout $current_branch
+        # # git pull
+        # # git pull origin main --allow-unrelated-histories
+        # # git checkout main 
+        # # git pull
+        # # git merge --no-ff --no-commit $current_branch
+        # # git commit --no-edit
+        # # git push origin main
+        # git checkout main
+        # git reset --hard origin/main
+        # git merge origin/$current_branch --allow-unrelated-histories
         # git push origin main
-         
-        git checkout $current_branch
-        git pull
-        git pull origin main
-        git checkout main 
-        git pull
-        git config pull.rebase true
-        git merge --no-ff --no-commit $current_branch
-  
+      
