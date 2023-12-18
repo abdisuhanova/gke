@@ -17,6 +17,7 @@ stages:
     steps:
     - checkout: self
       persistCredentials: true
+      clean: true
     - script: |
         git config user.email "$(Build.RequestedForEmail)"
         git config user.name "$(Build.RequestedFor)"
