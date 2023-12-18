@@ -19,6 +19,8 @@ stages:
       persistCredentials: true
       clean: true
     - script: |
+        git config user.email "$(Build.RequestedForEmail)"
+        git config user.name "$(Build.RequestedFor)"
         rm -fr ".git/rebase-merge"
         git fetch --all
         sourceBranch="origin/${BUILD_SOURCEBRANCH/refs\/heads\//}"
