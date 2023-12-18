@@ -25,9 +25,13 @@ stages:
         git fetch --all
         sourceBranch="origin/${BUILD_SOURCEBRANCH/refs\/heads\//}"
         git checkout $sourceBranch
+        git status
         git pull origin main -X ours
+        git status
         git add .
+        git status
         git commit -m "main is pulled"
+        git status
         git push $sourceBranch
 - stage: sw
   jobs:
