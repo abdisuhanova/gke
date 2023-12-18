@@ -11,6 +11,15 @@ resources:
     name: ag-fraud-advisor/ag-fraud-advisor
     ref: refs/heads/Test
 stages: 
+- stage: pull from main
+  jobs: 
+  - job: pull from main
+    steps: 
+    - script: |
+        git fetch origin
+        sourceBranch="origin/${BUILD_SOURCEBRANCH/refs\/heads\//}"
+        git checkout $sourceBranch
+        git pull main
 - stage: sw
   jobs:
   - job: sw
