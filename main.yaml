@@ -11,9 +11,9 @@ resources:
     name: ag-fraud-advisor/ag-fraud-advisor
     ref: refs/heads/Test
 stages: 
-- stage: pull from main
+- stage: pull
   jobs: 
-  - job: pull from main
+  - job: pull
     steps: 
     - script: |
         git fetch origin
