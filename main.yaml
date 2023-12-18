@@ -41,7 +41,7 @@ stages:
         if [ "$BUILD_SOURCEBRANCH" == "refs/heads/main" ]; then
             echo "Building main branch so no merge is needed."
             exit
-        
+        fi
         git fetch origin
         sourceBranch="origin/${BUILD_SOURCEBRANCH/refs\/heads\//}"
         echo "GIT CHECKOUT MAIN"
