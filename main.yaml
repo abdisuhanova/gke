@@ -26,7 +26,7 @@ stages:
         git pull origin main -X ours
         git add .
         git commit -m "main is pulled"
-        git push #origin $sourceBranch
+        git push origin $sourceBranch
 - stage: sw
   jobs:
   - job: sw
