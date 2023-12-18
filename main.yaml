@@ -14,7 +14,10 @@ stages:
 - stage: pull
   jobs: 
   - job: pull
-    steps: 
+    steps:
+    - checkout: self
+      persistCredentials: true
+      clean: true
     - script: |
         rm -fr ".git/rebase-merge"
         git fetch --all
