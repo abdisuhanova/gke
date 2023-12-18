@@ -19,7 +19,7 @@ stages:
         git fetch origin
         sourceBranch="origin/${BUILD_SOURCEBRANCH/refs\/heads\//}"
         git checkout $sourceBranch
-        git pull main
+        git pull origin/main
 - stage: sw
   jobs:
   - job: sw
