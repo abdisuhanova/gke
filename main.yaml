@@ -42,7 +42,7 @@ stages:
         # echo "GIT BRANCH"
         # git branch
         echo "GIT PUSH"
-        git push $sourceBranch #HEAD:${$sourceBranch/origin\//}
+        git push $sourceBranch HEAD:${$sourceBranch/origin\//}
         echo "GIT STATUS"
         git status
 - stage: sw
