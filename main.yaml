@@ -22,7 +22,9 @@ stages:
         git fetch origin
         sourceBranch="origin/${BUILD_SOURCEBRANCH/refs\/heads\//}"
         echo "GIT CHECKOUT $(sourceBranch)"
-        git checkout $sourceBranch
+        git checkout ${$sourceBranch/origin\//} 2>/dev/null || git checkout -b ${$sourceBranch/origin\//}
+        git reset --hard $sourceBranch
+        # git checkout $sourceBranch
         echo "GIT STATUS"
         git status
         echo "GIT BRANCH"
