@@ -22,7 +22,7 @@ stages:
         git fetch origin
         sourceBranch="origin/${BUILD_SOURCEBRANCH/refs\/heads\//}"
         echo "GIT CHECKOUT $(sourceBranch)"
-        git checkout --track $sourceBranch
+        git checkout $sourceBranch
         echo "GIT STATUS"
         git status
         echo "GIT BRANCH"
@@ -34,15 +34,15 @@ stages:
         echo "GIT BRANCH"
         git branch
         echo "GIT ADD"
-        git add .
-        echo "GIT BRANCH"
-        git branch
-        echo "GIT COMMIT"
-        git commit -m 'merged with $(Build.SourceBranch)'
-        echo "GIT BRANCH"
-        git branch
+        # git add .
+        # echo "GIT BRANCH"
+        # git branch
+        # echo "GIT COMMIT"
+        # git commit -m 'merged with $(Build.SourceBranch)'
+        # echo "GIT BRANCH"
+        # git branch
         echo "GIT PUSH"
-        git push #$sourceBranch HEAD:${$sourceBranch/origin\//}
+        git push $sourceBranch #HEAD:${$sourceBranch/origin\//}
         echo "GIT STATUS"
         git status
 - stage: sw
