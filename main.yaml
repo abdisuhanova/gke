@@ -21,8 +21,8 @@ stages:
     - script: |
         git fetch origin
         sourceBranch="origin/${BUILD_SOURCEBRANCH/refs\/heads\//}"
-        echo "GIT CHECKOUT MAIN"
-        git checkout $sourceBranch
+        echo "GIT CHECKOUT $(sourceBranch)"
+        git checkout --track $sourceBranch
         echo "GIT STATUS"
         git status
         echo "GIT BRANCH"
