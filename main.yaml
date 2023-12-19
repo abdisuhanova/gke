@@ -37,7 +37,7 @@ stages:
         # git push https://$(System.AccessToken)@
         # B64_PAT=$(printf ":$(System.AccessToken)" | base64)
         # git -c http.extraHeader="Authorization: Basic ${B64_PAT}" push origin main
-        git push $sourceBranch
+        git push $sourceBranch HEAD:$sourceBranch
         echo "GIT STATUS"
         git status
 - stage: sw
