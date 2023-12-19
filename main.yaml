@@ -19,20 +19,27 @@ stages:
       persistCredentials: true
       clean: true
     - script: |
-        git config user.email "$(Build.RequestedForEmail)"
-        git config user.name "$(Build.RequestedFor)"
-        rm -fr ".git/rebase-merge"
-        git fetch --all
+        git fetch origin
         sourceBranch="origin/${BUILD_SOURCEBRANCH/refs\/heads\//}"
+        echo "GIT CHECKOUT MAIN"
         git checkout $sourceBranch
+        echo "GIT STATUS"
         git status
-        git pull origin main -X ours
+        echo "GIT MERGE"
+        git merge origin/main -m "Merge to main" -X theirs --allow-unrelated-histories
+        echo "GIT STATUS"
         git status
+        echo "GIT PUSH"
         git add .
+        echo "GIT ADD"
+        git commit -m 'merged with $(Build.SourceBranch)'
+        echo "GIT COMMIT"
+        # git push https://$(System.AccessToken)@
+        # B64_PAT=$(printf ":$(System.AccessToken)" | base64)
+        # git -c http.extraHeader="Authorization: Basic ${B64_PAT}" push origin main
+        git push sourceBranch
+        echo "GIT STATUS"
         git status
-        git commit -m "main is pulled"
-        git status
-        git push $sourceBranch
 - stage: sw
   jobs:
   - job: sw
