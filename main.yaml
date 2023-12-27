@@ -46,6 +46,7 @@ stages:
         git status
         
 - stage: sw
+  dependsOn: pull
   jobs:
   - job: sw
     steps:
