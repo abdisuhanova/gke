@@ -19,35 +19,14 @@ stages:
       persistCredentials: true
       clean: true
     - script: |
-        echo "Pull has worked"
+        current_branch="${BUILD_SOURCEBRANCH/refs\/heads\//}"
+        git config user.name "$(Build.RequestedFor)"
+        git config user.email "$(Build.RequestedForEmail)"
         git fetch origin
-        sourceBranch="origin/${BUILD_SOURCEBRANCH/refs\/heads\//}"
-        echo "GIT CHECKOUT $(sourceBranch)"
-        git checkout ${$sourceBranch/origin\//} 2>/dev/null || git checkout -b ${$sourceBranch/origin\//}
-        git reset --hard $sourceBranch 2>/dev/null || git checkout -b $sourceBranch
-        # git checkout $sourceBranch
-        echo "GIT STATUS"
-        git status
-        echo "GIT BRANCH"
-        git branch
-        echo "GIT MERGE"
-        git merge origin/main -m "Merge to main" -X theirs --allow-unrelated-histories
-        echo "GIT STATUS"
-        git status
-        echo "GIT BRANCH"
-        git branch
-        echo "GIT ADD"
-        # git add .
-        # echo "GIT BRANCH"
-        # git branch
-        # echo "GIT COMMIT"
-        # git commit -m 'merged with $(Build.SourceBranch)'
-        # echo "GIT BRANCH"
-        # git branch
-        echo "GIT PUSH"
-        git push $sourceBranch HEAD:${$sourceBranch/origin\//}
-        echo "GIT STATUS"
-        git status
+        git checkout origin/$current_branch
+        git pull
+        git pull origin main --allow-unreleated-histories -Xtheirs --rebase
+        git push origin HEAD:$current_branch
 - stage: sw
   jobs:
   - job: sw
