@@ -19,32 +19,29 @@ stages:
       persistCredentials: true
       clean: true
     - script: |
+        git config user.email "$(Build.RequestedForEmail)"
+        git config user.name "$(Build.RequestedFor)"
+        echo "SOURCE BRANCH IS $BUILD_SOURCEBRANCH"
+        if [ "$BUILD_SOURCEBRANCH" == "refs/heads/main" ]; then
+            echo "Building main branch so no merge is needed."
+            exit
+        fi
         git fetch origin
         sourceBranch="origin/${BUILD_SOURCEBRANCH/refs\/heads\//}"
-        echo "GIT CHECKOUT $(sourceBranch)"
-        git checkout ${$sourceBranch/origin\//} 2>/dev/null || git checkout -b ${$sourceBranch/origin\//}
-        git reset --hard $sourceBranch 2>/dev/null || git checkout -b $sourceBranch
-        # git checkout $sourceBranch
+        echo "GIT CHECKOUT MAIN"
+        git checkout $sourceBranch
         echo "GIT STATUS"
         git status
-        echo "GIT BRANCH"
-        git branch
         echo "GIT MERGE"
-        git merge origin/main -m "Merge to main" -X theirs --allow-unrelated-histories
+        git merge "origin/main" -m "Merge to main" -X theirs --allow-unrelated-histories
         echo "GIT STATUS"
         git status
-        echo "GIT BRANCH"
-        git branch
-        echo "GIT ADD"
-        # git add .
-        # echo "GIT BRANCH"
-        # git branch
-        # echo "GIT COMMIT"
-        # git commit -m 'merged with $(Build.SourceBranch)'
-        # echo "GIT BRANCH"
-        # git branch
         echo "GIT PUSH"
-        git push $sourceBranch HEAD:${$sourceBranch/origin\//}
+        git add .
+        echo "GIT ADD"
+        git commit -m 'merged with $(Build.SourceBranch)'
+        echo "GIT COMMIT"
+        git push 
         echo "GIT STATUS"
         git status
 - stage: sw
@@ -77,9 +74,6 @@ stages:
         echo "GIT ADD"
         git commit -m 'merged with $(Build.SourceBranch)'
         echo "GIT COMMIT"
-        # git push https://$(System.AccessToken)@
-        # B64_PAT=$(printf ":$(System.AccessToken)" | base64)
-        # git -c http.extraHeader="Authorization: Basic ${B64_PAT}" push origin main
         git push origin main
         echo "GIT STATUS"
         git status
