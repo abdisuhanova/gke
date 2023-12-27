@@ -34,7 +34,7 @@ stages:
         git status
         echo "GIT MERGE"
         git merge --abort
-        git merge origin/main --allow-unrelated-histories
+        git merge origin/main --allow-unrelated-histories --strategy-option theirs
         echo "GIT STATUS"
         git status
         echo "GIT PUSH"
