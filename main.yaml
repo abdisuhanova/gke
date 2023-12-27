@@ -33,7 +33,7 @@ stages:
         echo "GIT STATUS"
         git status
         echo "GIT MERGE"
-        git merge "origin/main" -m "Merge to main" -X theirs --allow-unrelated-histories
+        git merge "origin/main" -m "Merge to main" -X ours --allow-unrelated-histories
         echo "GIT STATUS"
         git status
         echo "GIT PUSH"
