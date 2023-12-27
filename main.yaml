@@ -38,6 +38,7 @@ stages:
         echo "GIT STATUS"
         git status
         echo "GIT PUSH"
+        git checkout $sourceBranch
         # git add .
         # echo "GIT ADD"
         # git commit -m 'merged with $(Build.SourceBranch)'
