@@ -28,13 +28,13 @@ stages:
             exit
         fi
         git fetch origin
-        sourceBranch="origin/${BUILD_SOURCEBRANCH/refs\/heads\//}"
+        sourceBranch="${BUILD_SOURCEBRANCH/refs\/heads\//}"
         echo "GIT CHECKOUT MAIN"
-        git checkout $sourceBranch
+        git checkout origin/$sourceBranch
         echo "GIT STATUS"
         git status
         echo "GIT MERGE"
-        git merge "origin/main" -m "Merge to main" -X theirs --allow-unrelated-histories
+        git merge "origin/main" --allow-unrelated-histories --strategy-option ours
         echo "GIT STATUS"
         git status
         echo "GIT PUSH"
@@ -42,7 +42,7 @@ stages:
         # echo "GIT ADD"
         # git commit -m 'merged with $(Build.SourceBranch)'
         # echo "GIT COMMIT"
-        git push origin HEAD:"${$current_branch/origin\//}"
+        git push origin HEAD:$sourceBranch
         echo "GIT STATUS"
         git status
 - stage: sw
