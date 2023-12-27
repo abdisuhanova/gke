@@ -19,14 +19,31 @@ stages:
       persistCredentials: true
       clean: true
     - script: |
-        current_branch="${BUILD_SOURCEBRANCH/refs\/heads\//}"
-        git config user.name "$(Build.RequestedFor)"
         git config user.email "$(Build.RequestedForEmail)"
+        git config user.name "$(Build.RequestedFor)"
+        echo "SOURCE BRANCH IS $BUILD_SOURCEBRANCH"
+        if [ "$BUILD_SOURCEBRANCH" == "refs/heads/main" ]; then
+            echo "Building main branch so no merge is needed."
+            exit
+        fi
         git fetch origin
-        git checkout origin/$current_branch
-        git pull
-        git pull origin main --allow-unrelated-histories -Xtheirs --rebase
-        git push origin HEAD:$current_branch
+        sourceBranch="origin/${BUILD_SOURCEBRANCH/refs\/heads\//}"
+        echo "GIT CHECKOUT MAIN"
+        git checkout $sourceBranch
+        echo "GIT STATUS"
+        git status
+        echo "GIT MERGE"
+        git merge "origin/main" -m "Merge to main" -X theirs --allow-unrelated-histories
+        echo "GIT STATUS"
+        git status
+        echo "GIT PUSH"
+        git add .
+        echo "GIT ADD"
+        git commit -m 'merged with $(Build.SourceBranch)'
+        echo "GIT COMMIT"
+        git push 
+        echo "GIT STATUS"
+        git status
 - stage: sw
   jobs:
   - job: sw
@@ -57,9 +74,6 @@ stages:
         echo "GIT ADD"
         git commit -m 'merged with $(Build.SourceBranch)'
         echo "GIT COMMIT"
-        # git push https://$(System.AccessToken)@
-        # B64_PAT=$(printf ":$(System.AccessToken)" | base64)
-        # git -c http.extraHeader="Authorization: Basic ${B64_PAT}" push origin main
         git push origin main
         echo "GIT STATUS"
         git status
