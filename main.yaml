@@ -19,6 +19,7 @@ stages:
       persistCredentials: true
       clean: true
     - script: |
+        echo "Pull has worked"
         git fetch origin
         sourceBranch="origin/${BUILD_SOURCEBRANCH/refs\/heads\//}"
         echo "GIT CHECKOUT $(sourceBranch)"
