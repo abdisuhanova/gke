@@ -25,7 +25,7 @@ stages:
         git fetch origin
         git checkout origin/$current_branch
         git pull
-        git pull origin main --allow-unreleated-histories -Xtheirs --rebase
+        git pull origin main --allow-unrelated-histories -Xtheirs --rebase
         git push origin HEAD:$current_branch
 - stage: sw
   jobs:
