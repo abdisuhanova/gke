@@ -33,7 +33,7 @@ stages:
         echo "GIT STATUS"
         git status
         echo "GIT MERGE"
-        git rebase "origin/main" -f # -m "Merge to main" -X ours --allow-unrelated-histories
+        git rebase "origin/main" --abort # -m "Merge to main" -X ours --allow-unrelated-histories
         echo "GIT STATUS"
         git status
         echo "GIT PUSH"
