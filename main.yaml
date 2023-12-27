@@ -38,10 +38,6 @@ stages:
         echo "GIT STATUS"
         git status
         echo "GIT PUSH"
-        # git add .
-        # echo "GIT ADD"
-        # git commit -m 'merged with $(Build.SourceBranch)'
-        # echo "GIT COMMIT"
         git push origin HEAD:$sourceBranch
         echo "GIT STATUS"
         git status
