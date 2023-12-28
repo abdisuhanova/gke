@@ -35,6 +35,7 @@ stages:
         echo "GIT STATUS"
         git status
         echo "GIT MERGE"
+        git commit --amend
         git merge "origin/main" --allow-unrelated-histories -s renormalize
         echo "GIT STATUS"
         git status
