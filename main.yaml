@@ -34,8 +34,7 @@ stages:
         echo "GIT STATUS"
         git status
         echo "GIT MERGE"
-        git pull --autostash --rebase origin main
-        # git merge "origin/main" --allow-unrelated-histories --strategy-option ours
+        git merge "origin/main" --allow-unrelated-histories --strategy-option ours
         echo "GIT STATUS"
         git status
         echo "GIT PUSH"
