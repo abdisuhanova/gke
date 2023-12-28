@@ -36,6 +36,7 @@ stages:
         git status
         echo "GIT MERGE"
         git commit --amend
+        git merge --abort
         git merge "origin/main" --allow-unrelated-histories -s recursive
         echo "GIT STATUS"
         git status
