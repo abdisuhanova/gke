@@ -37,7 +37,7 @@ stages:
         echo "GIT MERGE"
         git commit --amend
         git merge --abort
-        git merge "origin/main" --allow-unrelated-histories -s recursive -X theirs
+        git merge "origin/main" --allow-unrelated-histories -s resolve
         echo "GIT STATUS"
         git status
         echo "GIT PUSH"
