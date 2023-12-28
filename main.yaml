@@ -1,4 +1,4 @@
-#pulled with main
+#pulled with main is worked
 trigger: 
   branches:
     include:
