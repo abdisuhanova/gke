@@ -31,11 +31,11 @@ stages:
         git fetch origin
         sourceBranch="${BUILD_SOURCEBRANCH/refs\/heads\//}"
         echo "GIT CHECKOUT MAIN"
-        git checkout origin/$sourceBranch
+        git checkout $sourceBranch
         echo "GIT STATUS"
         git status
         echo "GIT MERGE"
-        git merge -s recursive origin/main -X ours --allow-unrelated-histories
+        git merge -s recursive main -X ours --allow-unrelated-histories
         # git merge "origin/main" --allow-unrelated-histories --strategy-option ours -s octopus
         echo "GIT STATUS"
         git status
