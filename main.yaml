@@ -35,43 +35,44 @@ stages:
         echo "GIT STATUS"
         git status
         echo "GIT MERGE"
-        git merge "origin/main" --allow-unrelated-histories --strategy-option ours -s octopus
+        git merge -s recursive origin/main ours
+        # git merge "origin/main" --allow-unrelated-histories --strategy-option ours -s octopus
         echo "GIT STATUS"
         git status
         echo "GIT PUSH"
         git push origin HEAD:$sourceBranch
         echo "GIT STATUS"
         git status
-- stage: sw
-  jobs:
-  - job: sw
-    steps:
-    - checkout: self
-      persistCredentials: true
-      clean: true
-    - script: |
-        git config user.email "$(Build.RequestedForEmail)"
-        git config user.name "$(Build.RequestedFor)"
-        echo "SOURCE BRANCH IS $BUILD_SOURCEBRANCH"
-        if [ "$BUILD_SOURCEBRANCH" == "refs/heads/main" ]; then
-            echo "Building main branch so no merge is needed."
-            exit
-        fi
-        git fetch origin
-        sourceBranch="origin/${BUILD_SOURCEBRANCH/refs\/heads\//}"
-        echo "GIT CHECKOUT MAIN"
-        git checkout main
-        echo "GIT STATUS"
-        git status
-        echo "GIT MERGE"
-        git merge "$sourceBranch" -m "Merge to main" -X theirs --allow-unrelated-histories
-        echo "GIT STATUS"
-        git status
-        echo "GIT PUSH"
-        git add .
-        echo "GIT ADD"
-        git commit -m 'merged with $(Build.SourceBranch)'
-        echo "GIT COMMIT"
-        git push origin main
-        echo "GIT STATUS"
-        git status
+# - stage: sw
+#   jobs:
+#   - job: sw
+#     steps:
+#     - checkout: self
+#       persistCredentials: true
+#       clean: true
+#     - script: |
+#         git config user.email "$(Build.RequestedForEmail)"
+#         git config user.name "$(Build.RequestedFor)"
+#         echo "SOURCE BRANCH IS $BUILD_SOURCEBRANCH"
+#         if [ "$BUILD_SOURCEBRANCH" == "refs/heads/main" ]; then
+#             echo "Building main branch so no merge is needed."
+#             exit
+#         fi
+#         git fetch origin
+#         sourceBranch="origin/${BUILD_SOURCEBRANCH/refs\/heads\//}"
+#         echo "GIT CHECKOUT MAIN"
+#         git checkout main
+#         echo "GIT STATUS"
+#         git status
+#         echo "GIT MERGE"
+#         git merge "$sourceBranch" -m "Merge to main" -X theirs --allow-unrelated-histories
+#         echo "GIT STATUS"
+#         git status
+#         echo "GIT PUSH"
+#         git add .
+#         echo "GIT ADD"
+#         git commit -m 'merged with $(Build.SourceBranch)'
+#         echo "GIT COMMIT"
+#         git push origin main
+#         echo "GIT STATUS"
+#         git status
