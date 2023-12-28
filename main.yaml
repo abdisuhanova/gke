@@ -35,7 +35,8 @@ stages:
         echo "GIT STATUS"
         git status
         echo "GIT MERGE"
-        git merge -s recursive origin/main --allow-unrelated-histories
+        git merge --abort
+        git merge -s resolve origin/main #--allow-unrelated-histories
         # git merge "origin/main" --allow-unrelated-histories --strategy-option ours -s recursive  
         echo "GIT STATUS"
         git status
