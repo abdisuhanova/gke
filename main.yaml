@@ -28,26 +28,14 @@ stages:
             echo "Building main branch so no merge is needed."
             exit
         fi
-        echo "GIT BRANCH"
-        git branch
-        echo "GIT STATUS"
-        git status
-        echo "GIT FETCH"
         git fetch
         sourceBranch="${BUILD_SOURCEBRANCH/refs\/heads\//}"
-        echo "GIT BRANCH"
-        git branch
-        echo "GIT CHECKOUT TEST"
+        echo "GIT CHECKOUT MAIN"
         git checkout $sourceBranch
         echo "GIT STATUS"
         git status
-        echo "GIT REBASE"
-        rm -fr ".git/rebase-merge"
-        git config pull.rebase true
-        echo "GIT PULL"
-        git pull -s recursive -X theirs
         echo "GIT MERGE"
-        git merge -s recursive -X ours main #--allow-unrelated-histories
+        git merge -s recursive main -X ours --allow-unrelated-histories
         # git merge "origin/main" --allow-unrelated-histories --strategy-option ours -s octopus
         echo "GIT STATUS"
         git status
