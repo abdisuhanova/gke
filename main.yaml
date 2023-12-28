@@ -35,7 +35,7 @@ stages:
         echo "GIT STATUS"
         git status
         echo "GIT MERGE"
-        git merge "origin/main" --allow-unrelated-histories -s theirs
+        git merge "origin/main" --allow-unrelated-histories -s renormalize
         echo "GIT STATUS"
         git status
         echo "GIT PUSH"
