@@ -28,9 +28,12 @@ stages:
             echo "Building main branch so no merge is needed."
             exit
         fi
+        echo "GIT BRANCH"
         git branch
+        echo "GIT FETCH"
         git fetch
         sourceBranch="${BUILD_SOURCEBRANCH/refs\/heads\//}"
+        echo "GIT BRANCH"
         git branch
         echo "GIT CHECKOUT MAIN"
         git checkout $sourceBranch
