@@ -41,6 +41,8 @@ stages:
         git checkout $sourceBranch
         echo "GIT STATUS"
         git status
+        echo "GIT REBASE"
+        git config pull.rebase true
         echo "GIT PULL"
         git pull -s recursive -X theirs
         echo "GIT MERGE"
