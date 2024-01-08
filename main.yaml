@@ -41,7 +41,7 @@ stages:
         echo "GIT STATUS"
         git status
         echo "GIT PULL"
-        git pull origin $sourceBranch -s recursive -X theirs
+        git pull origin $sourceBranch -s recursive -X theirs --allow-unrelated-histories
         echo "GIT MERGE"
         git merge -s recursive -X ours main #--allow-unrelated-histories
         # git merge "origin/main" --allow-unrelated-histories --strategy-option ours -s octopus
