@@ -38,11 +38,11 @@ stages:
         echo "GIT BRANCH"
         git branch
         echo "GIT CHECKOUT TEST"
-        git checkout origin/$sourceBranch
+        git checkout $sourceBranch
         echo "GIT STATUS"
         git status
         echo "GIT MERGE"
-        git merge -s recursive -X ours origin/main #--allow-unrelated-histories
+        git merge -s recursive -X ours main #--allow-unrelated-histories
         # git merge "origin/main" --allow-unrelated-histories --strategy-option ours -s octopus
         echo "GIT STATUS"
         git status
