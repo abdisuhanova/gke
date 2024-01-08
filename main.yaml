@@ -30,6 +30,8 @@ stages:
         fi
         echo "GIT BRANCH"
         git branch
+        echo "GIT STATUS"
+        git status
         echo "GIT FETCH"
         git fetch
         sourceBranch="${BUILD_SOURCEBRANCH/refs\/heads\//}"
