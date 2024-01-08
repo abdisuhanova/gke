@@ -40,10 +40,8 @@ stages:
         git checkout $sourceBranch
         echo "GIT STATUS"
         git status
-        echo "GIT REBASE"
-        git config pull.rebase false
         echo "GIT PULL"
-        git pull -s recursive -X theirs
+        git pull origin $sourceBranch -s recursive -X theirs
         echo "GIT MERGE"
         git merge -s recursive -X ours main #--allow-unrelated-histories
         # git merge "origin/main" --allow-unrelated-histories --strategy-option ours -s octopus
