@@ -41,7 +41,6 @@ stages:
         echo "GIT STATUS"
         git status
         echo "GIT REBASE"
-        rm -fr ".git/rebase-merge"
         git config pull.rebase false
         echo "GIT PULL"
         git pull -s recursive -X theirs
