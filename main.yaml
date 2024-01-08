@@ -37,8 +37,8 @@ stages:
         sourceBranch="${BUILD_SOURCEBRANCH/refs\/heads\//}"
         echo "GIT BRANCH"
         git branch
-        echo "GIT CHECKOUT MAIN"
-        git checkout $sourceBranch
+        echo "GIT CHECKOUT TEST"
+        git checkout origin/$sourceBranch
         echo "GIT STATUS"
         git status
         echo "GIT MERGE"
